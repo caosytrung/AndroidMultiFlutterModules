@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MultiFluttersIntoAndroid</string>
+    <string name="open_cached_first_flutter_module">Open FIRST Flutter Module With CACHED Engine</string>
+    <string name="open_new_first_flutter_module">Open FIRST Flutter Module With NEW Engine</string>
 </resources>

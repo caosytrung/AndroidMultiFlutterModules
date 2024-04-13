@@ -5,6 +5,12 @@
       <excludeFolder url="file://$MODULE_DIR$/../../flutter_module_wrapper/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/../../flutter_module_wrapper/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/../../flutter_module_wrapper/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../flutter_module_wrapper/first_module/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/../../flutter_module_wrapper/first_module/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/../../flutter_module_wrapper/first_module/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../flutter_module_wrapper/second_module/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/../../flutter_module_wrapper/second_module/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/../../flutter_module_wrapper/second_module/build" />
     </content>
   </component>
 </module>
