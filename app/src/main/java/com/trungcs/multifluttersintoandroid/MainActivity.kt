@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.trungcs.multifluttersintoandroid.flutter.first_module.FlutterFirstModule
-import com.trungcs.multifluttersintoandroid.flutter.first_module.FlutterFirstModuleCallEvents
+import com.trungcs.multifluttersintoandroid.flutter.second_module.FlutterSecondModule
 import com.trungcs.multifluttersintoandroid.ui.theme.MultiFluttersIntoAndroidTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -26,9 +26,11 @@ class MainActivity : ComponentActivity() {
 
     @Inject
     lateinit var flutterFirstModule: FlutterFirstModule
+
+    @Inject
+    lateinit var flutterSecondModule: FlutterSecondModule
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setUpFlutterCallBack()
 
         setContent {
             MultiFluttersIntoAndroidTheme {
@@ -55,20 +57,20 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun setUpFlutterCallBack() {
-        flutterFirstModule.setCallBack(object : FlutterFirstModuleCallEvents {
-            override fun onOpenSecondModule() {
-
-            }
-        })
-    }
-
     private fun openCachedEngineFlutterFirstModule() {
         startActivity(flutterFirstModule.buildWithNewEngine(this))
     }
 
     private fun openNewEngineFlutterFirstModule() {
         startActivity(flutterFirstModule.buildWithCachedEngine(this))
+    }
+
+    private fun openCachedEngineFlutterSecondModule() {
+        startActivity(flutterSecondModule.buildWithNewEngine(this))
+    }
+
+    private fun openNewEngineFlutterSecondModule() {
+        startActivity(flutterSecondModule.buildWithCachedEngine(this))
     }
 }
 
