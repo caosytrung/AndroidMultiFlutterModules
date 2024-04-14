@@ -14,3 +14,6 @@
 .cxx
 local.properties
 /.gradle/
+/.flutter_module_wrapper/android/.gradle/
+/flutter_module_wrapper/.dart_tool/
+/.gradle/8.4/

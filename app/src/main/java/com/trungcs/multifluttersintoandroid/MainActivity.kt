@@ -5,30 +5,25 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.trungcs.multifluttersintoandroid.flutter.first_module.FlutterFirstModule
 import com.trungcs.multifluttersintoandroid.flutter.second_module.FlutterSecondModule
 import com.trungcs.multifluttersintoandroid.ui.theme.MultiFluttersIntoAndroidTheme
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
-@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private val flutterSecondModule = FlutterSecondModule.getInstance()
+    private val flutterFirstModule = FlutterFirstModule.getInstance()
 
-    @Inject
-    lateinit var flutterFirstModule: FlutterFirstModule
-
-    @Inject
-    lateinit var flutterSecondModule: FlutterSecondModule
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -44,40 +39,35 @@ class MainActivity : ComponentActivity() {
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        ElevatedButton(onClick = ::openNewEngineFlutterFirstModule) {
-                            Text(text = stringResource(id = R.string.open_new_first_flutter_module))
-                        }
 
-                        ElevatedButton(onClick = ::openCachedEngineFlutterFirstModule) {
+                        Text(
+                            text = getString(R.string.app_native_application),
+                            style = MaterialTheme.typography.titleMedium
+                        )
+
+                        Spacer(modifier = Modifier.height(64.dp))
+
+                        ElevatedButton(onClick = ::openFirstModuleWithCachedEngine) {
                             Text(text = stringResource(id = R.string.open_cached_first_flutter_module))
                         }
+
+                        Text(text = "------------------------")
+
+                        ElevatedButton(onClick = ::openSecondModuleWithCachedEngine) {
+                            Text(text = stringResource(id = R.string.open_cached_second_flutter_module))
+                        }
+
                     }
                 }
             }
         }
     }
 
-    private fun openCachedEngineFlutterFirstModule() {
-        startActivity(flutterFirstModule.buildWithNewEngine(this))
-    }
-
-    private fun openNewEngineFlutterFirstModule() {
+    private fun openFirstModuleWithCachedEngine() {
         startActivity(flutterFirstModule.buildWithCachedEngine(this))
     }
 
-    private fun openCachedEngineFlutterSecondModule() {
-        startActivity(flutterSecondModule.buildWithNewEngine(this))
-    }
-
-    private fun openNewEngineFlutterSecondModule() {
+    private fun openSecondModuleWithCachedEngine() {
         startActivity(flutterSecondModule.buildWithCachedEngine(this))
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MultiFluttersIntoAndroidTheme {
-
     }
 }
